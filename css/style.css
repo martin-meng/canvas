@@ -1,25 +1,84 @@
+*{margin: 0; padding: 0;}
 
-        * {
-            margin: 0
-        }
+ul,ol{
+    list-style: none;
+}
 
-        #xxx {
-            background: oldlace;
-            display: block;
-        }
+.icon {
+    width: 1em; height: 1em;
+    vertical-align: -0.15em;
+    fill: currentColor;
+    overflow: hidden;
+    }
 
-        .actions {
-            position: fixed;
-            bottom: 0;
-            left: auto;
-        }
-        .actions > #brush{
-            display: none;
-        }
 
-        .actions.x > #brush{
-            display: inline-block;
-        }
-        .actions.x > #eraser{
-            display: none;
-        }
+body{
+    overflow: hidden;
+}
+
+#xxx {
+    background: oldlace;
+    display: block;
+}
+
+.actions {
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 20px;
+}
+
+.actions svg{
+    width: 1.5em;
+    height: 1.5em;
+    transition: all 0.2s;
+    margin: 0 10px;
+}
+/* 
+.actions > #brush{
+    display: none;
+}
+
+.actions.x > #brush{
+    display: inline-block;
+}
+.actions.x > #eraser{
+    display: none;
+} */
+
+.actions svg.active{
+    fill: brown;
+    transform: scale(1.2);
+}
+
+.colors{
+    position: fixed;
+    top:60px;
+    left:28px;
+}
+
+.colors li{
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 2px solid rgba(139, 194, 152, 0.548);
+    margin: 10px 0;
+    transition: all 0.2s;
+
+}
+
+.colors > li.red {
+    background: red;
+}
+
+.colors > li.green {
+    background: green;
+}
+
+.colors > li.blue {
+    background: blue;
+}
+
+.colors > li.active{
+    transform: scale(1.2);
+}

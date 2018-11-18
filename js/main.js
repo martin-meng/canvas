@@ -9,6 +9,7 @@ listenToUser(yyy)
 /*--------------------------↓下面部分主要是橡皮擦设置---------------------------------*/
 
 var eraserEnabled = false
+/*
 eraser.onclick = function () {
     //将变量转化至反向值
     // eraserEnabled = !eraserEnabled
@@ -20,6 +21,40 @@ brush.onclick = function () {
     eraserEnabled = false
     actions.className = 'actions'
 }
+*/
+    pen.onclick = function(){
+        eraserEnabled = false
+        pen.classList.add('active')
+        eraser.classList.remove('active')
+
+    }
+
+    eraser.onclick = function(){
+        eraserEnabled = true
+        eraser.classList.add('active')
+        pen.classList.remove('active')
+    }
+
+    red.onclick = function(){
+        context.strokeStyle = 'red'
+        red.classList.add('active')
+        green.classList.remove('active')
+        blue.classList.remove('active')
+
+    }
+    green.onclick = function(){
+        context.strokeStyle = 'green'
+        green.classList.add('active')
+        red.classList.remove('active')
+        blue.classList.remove('active')
+    }
+
+    blue.onclick = function(){
+        context.strokeStyle = 'blue'
+        blue.classList.add('active')
+        red.classList.remove('active')
+        green.classList.remove('active')
+    }
 
 
 /*--------------------------------自动设置窗口------------------------------------*/
@@ -46,7 +81,6 @@ function drawLine(x1, y1, x2, y2) {
     context.beginPath()
 
     context.lineWidth = 4
-    context.strokeStyle = 'black'
     context.moveTo(x1, y1)
     context.lineTo(x2, y2)
     context.stroke()
