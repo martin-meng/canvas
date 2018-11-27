@@ -64,6 +64,9 @@ brush.onclick = function () {
         //清除canvas的画板内容
         //var context = canvas.getContext('2d'); 最前面声明了 所以去掉了
         context.clearRect(0, 0, yyy.width, yyy.height);
+        pen.classList.add('active')
+        eraserEnabled = false
+        eraser.classList.remove('active')
 
     }
 
