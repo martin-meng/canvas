@@ -1,14 +1,24 @@
 /*--------------------上面部分主要是对画板的设置--------------------*/
 var yyy = document.getElementById('xxx');
 var context = yyy.getContext('2d');
+
+var lineWidth = 5
+
+
+
 autoSetCanvas(yyy)
 listenToUser(yyy)
+
+
+
+
 
 
 
 /*--------------------------↓下面部分主要是橡皮擦设置---------------------------------*/
 
 var eraserEnabled = false
+var bdActionsEnabled = false
 /*
 eraser.onclick = function () {
     //将变量转化至反向值
@@ -35,9 +45,54 @@ brush.onclick = function () {
         pen.classList.remove('active')
     }
 
+    xihuabi.onclick = function(){
+        lineWidth = 5
+        bdActionsEnabled = false
+        xihuabi.classList.add('active')
+        cuhuabi.classList.remove('active')
+
+    }
+
+    cuhuabi.onclick = function(){
+        lineWidth = 15
+        bdActionsEnabled = true
+        cuhuabi.classList.add('active')
+        xihuabi.classList.remove('active')
+    }
+
+    clear.onclick = function(){
+        //清除canvas的画板内容
+        //var context = canvas.getContext('2d'); 最前面声明了 所以去掉了
+        context.clearRect(0, 0, yyy.width, yyy.height);
+
+    }
+
+    save.onclick = function(){
+        var url = yyy.toDataURL("image/png")
+        console.log(url)
+        var a = document.createElement('a')
+        document.body.appendChild(a)
+        a.href = url
+        a.download = '我的画'
+        a.target = '_blank'
+        a.click()
+
+    }
+
+
+
+    black.onclick = function(){
+        context.strokeStyle = 'black'
+        black.classList.add('active')
+        red.classList.remove('active')
+        green.classList.remove('active')
+        blue.classList.remove('active')
+    }
+
     red.onclick = function(){
         context.strokeStyle = 'red'
         red.classList.add('active')
+        black.classList.remove('active')        
         green.classList.remove('active')
         blue.classList.remove('active')
 
@@ -45,6 +100,7 @@ brush.onclick = function () {
     green.onclick = function(){
         context.strokeStyle = 'green'
         green.classList.add('active')
+        black.classList.remove('active')
         red.classList.remove('active')
         blue.classList.remove('active')
     }
@@ -52,10 +108,10 @@ brush.onclick = function () {
     blue.onclick = function(){
         context.strokeStyle = 'blue'
         blue.classList.add('active')
+        black.classList.remove('active')           
         red.classList.remove('active')
         green.classList.remove('active')
     }
-
 
 /*--------------------------------自动设置窗口------------------------------------*/
 function autoSetCanvas(canvas) {
@@ -80,7 +136,7 @@ function autoSetCanvas(canvas) {
 function drawLine(x1, y1, x2, y2) {
     context.beginPath()
 
-    context.lineWidth = 4
+    context.lineWidth = lineWidth
     context.moveTo(x1, y1)
     context.lineTo(x2, y2)
     context.stroke()

@@ -17,7 +17,7 @@ body{
 }
 
 #xxx {
-    background: oldlace;
+    background: rgb(255, 255, 255);
     display: block;
 }
 
@@ -34,6 +34,10 @@ body{
     transition: all 0.2s;
     margin: 0 10px;
 }
+
+#bdActions  {
+    left: 120px;
+}
 /* 
 .actions > #brush{
     display: none;
@@ -47,7 +51,7 @@ body{
 } */
 
 .actions svg.active{
-    fill: brown;
+    fill: rgb(145, 62, 240);
     transform: scale(1.2);
 }
 
@@ -67,6 +71,9 @@ body{
 
 }
 
+.colors>li.black {
+    background: black;
+}
 .colors > li.red {
     background: red;
 }
